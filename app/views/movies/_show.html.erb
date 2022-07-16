@@ -1,6 +1,6 @@
-<p>Movies TBD</p>
-<%# <ul class="list-group"> %>
-    <%# @movies.each do |movie| %>
-      <%# <li class="list-group-item">movie.title, movie.overview, movie.rating</li> %>
-    <%# end %>
-<%# </ul> %>
+<% @movies.each do |movie| %>
+  <li class="list-group-item"><%= movie.title %>,
+                              <%= movie.overview %>,
+                              <%= movie.rating %>
+  </li>
+<% end %>

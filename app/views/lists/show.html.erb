@@ -1,15 +1,24 @@
 <h2><%= @list.name %></h2>
 
-<%= render "movies/show" %>
+<%= pluralize(@list.movies.size, 'movie') %>
 
 <ul class="list-group">
-  <% @list.bookmarks.each do |bookmark| %>
-    <li class="list-group-item"><%= bookmark.comment %>
-                                <%= link_to "Delete bookmark",
-                                    bookmark_path(bookmark),
-                                    method: :delete,
-                                    data: { confirm: "Are you sure?"} %></li>
-  <% end %>
+  <% @list.movies.each do |movie| %>
+    <li class="list-group-item">
+        <%= image_tag movie.poster_url,
+        alt: movie.title,
+        width: "400px" %></li>
+    <% @list.bookmarks.each do |bookmark| %>
+      <li class="list-group-item"><%= bookmark.comment %>
+                                  <%= link_to "Delete bookmark",
+                                      bookmark_path(bookmark),
+                                      method: :delete,
+                                      data: { confirm: "Are you sure?"} %></li>
+    <% end %>
+    <!-- Force next columns to break to new line -->
+      <hr>
+      <div class="w-100"></div>
+    <% end %>
 </ul>
 
 <%# Actions %>

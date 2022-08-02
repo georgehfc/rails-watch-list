@@ -5,10 +5,11 @@
 <ul class="list-group">
   <% @list.movies.each do |movie| %>
     <li class="list-group-item">
-        <%= image_tag movie.poster_url,
-        alt: movie.title,
-        width: "400px" %></li>
-    <% @list.bookmarks.each do |bookmark| %>
+      <h4><%= movie.title %></h4>
+      <%= image_tag movie.poster_url,
+      alt: movie.title,
+      width: "400px" %></li>
+    <% movie.bookmarks.each do |bookmark| %>
       <li class="list-group-item"><%= bookmark.comment %>
                                   <%= link_to "Delete bookmark",
                                       bookmark_path(bookmark),
@@ -16,9 +17,9 @@
                                       data: { confirm: "Are you sure?"} %></li>
     <% end %>
     <!-- Force next columns to break to new line -->
-      <hr>
-      <div class="w-100"></div>
-    <% end %>
+    <hr>
+    <div class="w-100"></div>
+  <% end %>
 </ul>
 
 <%# Actions %>
